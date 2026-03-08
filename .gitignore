@@ -1,0 +1,7 @@
+data/
+bin/
+core-bin/
+*.tar.gz
+*.deb
+.DS_Store
+.env

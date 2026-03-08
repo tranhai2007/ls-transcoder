@@ -1,0 +1,14 @@
+services:
+  ls-transcoder:
+    build:
+      context: .
+      dockerfile: Dockerfile.binary
+    container_name: ls-transcoder
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./bin:/app/bin
+    restart: always
+    environment:
+      - PORT=3000

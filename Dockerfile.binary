@@ -1,0 +1,33 @@
+# ==========================================
+# LS Transcoder 非开源分发版运行时镜像 (Binary-only)
+# ==========================================
+# 此镜像仅包含编译后的二进制文件和静态资源，不含源码。
+# 构建前请确保已运行 scripts/package.sh 并在解压后的目录下。
+
+FROM debian:bullseye-slim
+
+WORKDIR /app
+
+# 安装基础运行时库 (CA 证书等)
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# 从打包目录复制产物
+# 目录结构应为：
+# .
+# ├── cli-server
+# └── apps/web-dashboard/dist/
+COPY cli-server /app/cli-server
+COPY apps/web-dashboard/dist /app/apps/web-dashboard/dist
+
+# 赋予执行权限
+RUN chmod +x /app/cli-server
+
+# 容器配置
+ENV PORT=3000
+VOLUME ["/app/data", "/app/bin"]
+EXPOSE 3000
+
+# 启动：默认启动网关
+CMD ["./cli-server"]
